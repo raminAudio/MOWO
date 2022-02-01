@@ -169,3 +169,7 @@ models/input/yolo.h5
 models/input/yolov3.weights
 models/fine_tunned_yolo_weights/trained_weights_stage_0_mouse.h5
 models/fine_tunned_yolo_weights/trained_weights_final_mouse.h5
+/.ipynb_checkpoints
+/.DS_Store
+/.gitignore
+
