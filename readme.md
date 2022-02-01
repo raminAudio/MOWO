@@ -14,6 +14,8 @@ You can see the videos under : picture and videos/
 ![alt text](pictures%20and%20videos/shot2.png)
 ![alt text](pictures%20and%20videos/shot3.png)
 
+The "curvey" plots under the mouse represent where the mouse activities in the frame are (look at the maximum of the curve).  
+
 
 I used the boundary boxes generated from such heuristics to create a training dataset that resembles an object localization dataset. The amount of generated data wasn't that much to train a model from scratch. Data augmentation didn't make much sense here as the camera angel and colors are fairly consistent for DigiGait. Though, I did try to augment my data by rotating the mouse to capture the paw from different angels, I later found out that my dataset contains several of those examples without me having to synthetically rotate the image and its boundary boxes.
 
@@ -31,12 +33,17 @@ You can find a copy of my training notebook here: notebooks/train-bottleneck.ipy
 
 This notebooks starts by generating features from YOLO which are then passed through the pre-trained YOLO model (YoloV3)  in two different round. First, with keeping only layer weights fixed except the last two, second by training all layers unfreezed (as was suggested and implemented in https://github.com/qqwweee/keras-yolo3).
 
+![alt text](pictures%20and%20videos/shot4.png)
+![alt text](pictures%20and%20videos/shot5.png)
+
+
 Once the model is trained, inspired by the mentioned repo, I wrote a notebook that used this fine-tunned YOLO model on the mouse videos that,
   1- Detect the frames where the mouse is moving. This step was also done during data pre-processing for training. The reason for this is because we're only interested in how the mouse is walking (not how the mouse is not walking). It also made it easier for the image processing tool to detect paws, but that's just a bonus.
   2- Once we have a shorter version of the mouse video only walking, it is passed to some pre-processing steps before it is passed to MOVO (mouse only walk oooh, original I know.). This step output boundary boxes for each detected paw. Normally two or three paws depending on how the mouse is walking.
   3- Outputs from step 2 is then passed to few analytics which calculate number of steps and deviation for each paw.
 
-![alt text](pictures%20and%20videos/shot4.png)
+![alt text](pictures%20and%20videos/shot6.png)
+
 
 
 That's pretty much it.
