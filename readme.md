@@ -16,6 +16,8 @@ You can see the videos under : picture and videos/
 
 The "curvey" plots under the mouse represent where the mouse activities in the frame are (look at the maximum of the curve).  
 
+The subplot on bottom right depicts a walking signal. If the walking signal keeps going up, it means the mouse is not walking during those frames. For more information see the mouse-moving notebook. 
+
 
 I used the boundary boxes generated from such heuristics to create a training dataset that resembles an object localization dataset. The amount of generated data wasn't that much to train a model from scratch. Data augmentation didn't make much sense here as the camera angel and colors are fairly consistent for DigiGait. Though, I did try to augment my data by rotating the mouse to capture the paw from different angels, I later found out that my dataset contains several of those examples without me having to synthetically rotate the image and its boundary boxes.
 
