@@ -149,3 +149,23 @@ injured/left039348_20cms_0degUP.avi
 injured/rightright_039348_2_20cms_0degUP.avi
 injured/leftleft039348_2_20cms_0degUP.avi
 injured/right_right_039348_3_20cms_0degUP.avi
+./models/input/yolo.h5
+./models/input/yolov3.weights
+./models/fine_tunned_yolo_weights/trained_weights_stage_0_mouse.h5
+./models/fine_tunned_yolo_weights/trained_weights_final_mouse.h5
+/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/97.0.4692.99/Google Chrome Framework
+/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/97.0.4692.71/Google Chrome Framework
+/Applications/Spotify.app/Contents/Frameworks/Chromium Embedded Framework.framework/Chromium Embedded Framework
+/Applications/Adobe Acrobat Reader DC.app/Contents/Frameworks/Chromium Embedded Framework.framework/Chromium Embedded Framework
+/Applications/Adobe Acrobat DC/Adobe Acrobat.app/Contents/Plugins/Preflight.acroplugin/Contents/Frameworks/PreflightLib.framework/Versions/A/PreflightLib
+/Applications/Adobe Acrobat DC/Adobe Acrobat.app/Contents/Frameworks/Chromium Embedded Framework.framework/Chromium Embedded Framework
+/Library/Application Support/Adobe/AdobeGCClient/AdobeGCClient.app/Contents/Frameworks/Chromium Embedded Framework.framework/Chromium Embedded Framework
+/Library/Developer/CommandLineTools/usr/bin/clang
+/Library/Developer/CommandLineTools/usr/bin/swift-frontend
+/Library/Developer/CommandLineTools/usr/lib/sourcekitd.framework/Versions/A/XPCServices/SourceKitService.xpc/Contents/MacOS/SourceKitService
+/Library/Developer/CommandLineTools/usr/lib/libclang.dylib
+/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB
+models/input/yolo.h5
+models/input/yolov3.weights
+models/fine_tunned_yolo_weights/trained_weights_stage_0_mouse.h5
+models/fine_tunned_yolo_weights/trained_weights_final_mouse.h5
