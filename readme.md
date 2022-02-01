@@ -1,5 +1,5 @@
 # MOWO
-Mouse Only Walk Oooh
+## Mouse Only Walk Oooh
 
 This repo contains training and inference scripts for tracking a mouse on a transparent treadmill (https://mousespecifics.com/digigait/).
 
