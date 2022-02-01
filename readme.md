@@ -31,15 +31,20 @@ I grabbed and modified some of their codes to match what I have for my training 
 
 You can find a copy of my training notebook here: notebooks/train-bottleneck.ipynb  
 
-This notebooks starts by generating features from YOLO which are then passed through the pre-trained YOLO model (YoloV3)  in two different round. First, with keeping only layer weights fixed except the last two, second by training all layers unfreezed (as was suggested and implemented in https://github.com/qqwweee/keras-yolo3).
+This notebooks starts by generating features from YOLO which are then passed through the pre-trained YOLO model (YoloV3)  in two different round. First, with keeping only layer weights fixed except the last two, second by training the weights for all layers  (as was suggested and implemented in https://github.com/qqwweee/keras-yolo3).
 
+Image below are the boundary boxes detected by the image processing tool. Mouse center was used to distinguish between front and back paws.
 ![alt text](pictures%20and%20videos/shot4.png)
+
+Image below are the boundary boxes predicted by the fine-tuned YOLOV3 model (MOVO as I call it, mouse only walk oooh, original I know).
+
 ![alt text](pictures%20and%20videos/shot5.png)
 
 
-Once the model is trained, inspired by the mentioned repo, I wrote a notebook that used this fine-tunned YOLO model on the mouse videos that,
+Once the model is trained, inspired by the mentioned repo, I wrote a notebook that used this fine-tuned YOLO model on the mouse videos that,
+
   1- Detect the frames where the mouse is moving. This step was also done during data pre-processing for training. The reason for this is because we're only interested in how the mouse is walking (not how the mouse is not walking). It also made it easier for the image processing tool to detect paws, but that's just a bonus.
-  2- Once we have a shorter version of the mouse video only walking, it is passed to some pre-processing steps before it is passed to MOVO (mouse only walk oooh, original I know.). This step output boundary boxes for each detected paw. Normally two or three paws depending on how the mouse is walking.
+  2- Once we have a shorter version of the mouse video only walking, it is passed to some pre-processing steps before it is passed to MOVO . This step output boundary boxes for each detected paw. Normally two or three paws depending on how the mouse is walking.
   3- Outputs from step 2 is then passed to few analytics which calculate number of steps and deviation for each paw.
 
 ![alt text](pictures%20and%20videos/shot6.png)
