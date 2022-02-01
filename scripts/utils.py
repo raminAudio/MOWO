@@ -161,8 +161,6 @@ def get_random_data_modified(annotation_line, input_shape, random=False, max_box
     box[:, [1,3]] = box[:, [1,3]]*scaleY + dy
     
     box_data = box
-#     print("*")
-#     plt.imshow(image_data)
     
     total_boxes = np.zeros((max_boxes,5)) # maximum boxes
     np.random.shuffle(box_data)
@@ -233,7 +231,6 @@ def get_random_data_modified(annotation_line, input_shape, random=False, max_box
             box_data = np.int32(box_data)
             
             for i,box_ in enumerate(box_data): 
-#                 box_ = np.array([box_[0] , box_[1] , box_[2] , box_[3], box_[4] ])
                 total_boxes[i,:] = box_
                 plt.plot((box_[0]+box_[2])/2,(box_[1]+box_[3])/2,'x')
                 

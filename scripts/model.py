@@ -12,7 +12,7 @@ from keras.layers import BatchNormalization
 from keras.models import Model
 from keras.regularizers import l2
 
-from utils_py import *
+from utils import *
 
 
 @wraps(Conv2D)

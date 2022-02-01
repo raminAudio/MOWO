@@ -13,15 +13,14 @@ from keras.models import load_model
 from keras.layers import Input
 from PIL import Image, ImageFont, ImageDraw
 
-from model_py import *#yolo_eval, yolo_body, tiny_yolo_body
-from utils_py import *#letterbox_image
+from model import *
+from utils import *
 import os
 
 # must be added for inference and commented for training
 from tensorflow.python.framework.ops import disable_eager_execution
 disable_eager_execution()
 
-# from keras.utils import multi_gpu_model
 
 class YOLO(object):
     _defaults = {
