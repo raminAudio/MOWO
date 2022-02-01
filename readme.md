@@ -7,7 +7,7 @@ As with most machine learning tools data, "good data", is required. To overcome 
 
 You can find the notebook here: notebooks/mouse-moving.ipynb  
 
-![](pictures%20and%20videos/video_1.mov)
+See pictures%20and%20videos/video_1.mov
 ![alt text](pictures%20and%20videos/shot1.png)
 ![alt text](pictures%20and%20videos/shot2.png)
 ![alt text](pictures%20and%20videos/shot3.png)
@@ -53,6 +53,6 @@ Once the model is trained, inspired by the mentioned repo, I wrote a notebook th
 
 ![alt text](pictures%20and%20videos/shot6.png)
 
-
+See pictures%20and%20videos/video_2.mov
 
 That's pretty much it.
