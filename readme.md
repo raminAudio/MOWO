@@ -8,6 +8,8 @@ To overcome the lack of labeled data, I used image processing tools to create se
 
 You can find the notebook here: notebooks/mouse-moving.ipynb  
 
+![alt text](pictures%20and%20videos/shot1.png)
+
 I used the boundary boxes generated from such heuristics to create a training dataset that resembles an object localization dataset. The amount of generated data wasn't that much to train a model from scratch. Data augmentation didn't make much sense here as the camera angel and colors are fairly consistent for DigiGait. Though, I did try to augment my data by rotating the mouse to capture the paw from different angels, I later found out that my dataset contains several of those examples without me having to synthetically rotate the image and its boundary boxes.
 
 Hence, I decided to fine-tuned an existing model which is where I came across YOLO (You Only Look Once)
@@ -27,4 +29,4 @@ Once the model is trained, inspired by the mentioned repo, I wrote a notebook th
   2- Once we have a shorter version of the mouse video only walking, it is passed to some pre-processing steps before it is passed to MOVO (mouse only walk oooh, original I know.). This step output boundary boxes for each detected paw. Normally two or three paws depending on how the mouse is walking.
   3- Outputs from step 2 is then passed to few analytics which calculate number of steps and deviation for each paw.
 
-That's pretty much it. 
+That's pretty much it.
