@@ -9,12 +9,9 @@ As with most machine learning tools data, "good data", is required. To overcome 
 
 You can find the notebook here: notebooks/mouse-moving.ipynb  
 
-See
+See Youtube Video Below:
 [![IMAGE ALT TEXT HERE](pictures%20and%20videos/walk_snapshot.png)](https://www.youtube.com/watch?v=yv3E0Pz0a1A_)
 
-![alt text](pictures%20and%20videos/shot1.png)
-![alt text](pictures%20and%20videos/shot2.png)
-![alt text](pictures%20and%20videos/shot3.png)
 
 The subplot in the right bottom represents where the mouse activities in the frame are (look at the maximum of the curve).  
 
@@ -44,10 +41,13 @@ Image below are the boundary boxes predicted by the fine-tuned YOLOV3 model (MOV
 
 ![alt text](pictures%20and%20videos/shot5.png)
 
+
+Once the model is trained, inspired by the mentioned repo, I wrote a notebook that used this fine-tuned YOLO model on the mouse videos.
+
+See Youtube video of MOWO in action below.
 [![IMAGE ALT TEXT HERE](pictures%20and%20videos/mowo_snapshot.png)](https://www.youtube.com/watch?v=D9q5ykkn8Og_)
 
-
-Once the model is trained, inspired by the mentioned repo, I wrote a notebook that used this fine-tuned YOLO model on the mouse videos that,
+This notebook does the following:
 
   1- Detect the frames where the mouse is moving. This step was also done during data pre-processing for training. The reason for this is because we're only interested in how the mouse is walking (not how the mouse is not walking). It also made it easier for the image processing tool to detect paws, but that's just a bonus.
 
