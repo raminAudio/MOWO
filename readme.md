@@ -7,8 +7,7 @@ As with most machine learning tools data, "good data", is required. To overcome 
 
 You can find the notebook here: notebooks/mouse-moving.ipynb  
 
-You can see the videos under : picture and videos/
-
+![](pictures%20and%20videos/video_1.mov)
 ![alt text](pictures%20and%20videos/shot1.png)
 ![alt text](pictures%20and%20videos/shot2.png)
 ![alt text](pictures%20and%20videos/shot3.png)
@@ -40,6 +39,8 @@ Image below are the boundary boxes detected by the image processing tool. Mouse 
 Image below are the boundary boxes predicted by the fine-tuned YOLOV3 model (MOVO as I call it, mouse only walk oooh, original I know).
 
 ![alt text](pictures%20and%20videos/shot5.png)
+
+![](pictures%20and%20videos/video_2.mov)
 
 
 Once the model is trained, inspired by the mentioned repo, I wrote a notebook that used this fine-tuned YOLO model on the mouse videos that,
