@@ -55,8 +55,36 @@ This notebook does the following:
 
   3- Outputs from step 2 is then passed to few analytics which calculate number of steps and deviation for each paw.
 
-![alt text](pictures%20and%20videos/shot6.png)
+![alt text](pictures%20and%20videos/step.png)
 
-See /pictures and videos/video_2.mov
+Figure below shows a "walking scores" for each paw (FR is front right and BL is back left).
+                                [[FR BR],
+                                 [FL,BL]]
 
-That's pretty much it.
+Please keep in mind for all the figures below, the window size (i.e., number of frames) affects how each plot look like. It's important to keep that constant when comparing different cases. Also, a reminder that only walking frames are being analyzed, so a sudden shift in the distribution doesn't mean the mouse jumped to the back of the treadmill, it simply means the mouse wasn't walking during those frames, so when the mouse started to walk again it was at the back of the treadmill.                               
+
+Each point on these subplot represent the average number of steps the mouse has taken on the corresponding paw over 400 frames. Frames were overlapped 50% and frames where a mouse paw was not detected by MOWO were not accounted when calculating these scores. Note that MOWO's inaccuracies when detecting a paw is not a big deal for this metric, as it's an average over several frames. So, what does these four subplots tell you about the mouse walking?
+
+Take front left paw on top left subplot with the score 0.897. The mouse seems to have been walking an average of 9-10 steps per 400 frames for most part of the video. You see a similar patten for every other paw. Around index 25-30 there is not as many steps on the left paws. This maybe be a mistake or perhaps the mouse is having some issues with the paws on left, TBD.
+
+Now let's look at the four subplots below.
+
+![alt text](pictures%20and%20videos/xy.png)
+
+
+Each point in the subplot shows the mouse paw location on the X and Y axis of the image (horizontal and vertical) averaged over 400 frames. One thing to note is that in the case where a model was not able to detect a paw the x and y for the paw is replaced by the average of the x's and y's of that paw. This mainly useful to compare how each paw is utilized by the mouse. There are some sudden peaks in all four paws on the X axis that seem to match with the low left paws walking scores from earlier. Y axis seems to be more or less constant for most frames.
+
+
+Next subplots shown below are polar plots of each frame where a paw was detected. You can think of these plots to represent the direction and the range for each paw. Take caution when considering outliers though (e.g, the markers at 1000 radius shown for the BR paw).
+
+![alt text](pictures%20and%20videos/polar.png)
+
+Last but not least, the two figures below show the angles and radius for each frame. Ignore the values, look at them relative to each other to find out whether the mouse was using one paw more than another, etc.  
+
+Angles
+![alt text](pictures%20and%20videos/angles.png)
+
+Radius
+![alt text](pictures%20and%20videos/radius.png)
+
+That's pretty much it. A lot of these analytics is just something I tried to derive to see how a mouse is doing on a treadmill, but you may very well wants to use the location of the paws to come up with your own statistic. If you have any questions or want to discuss other features feel free to drop me a line at ramin.audio@gmail.com

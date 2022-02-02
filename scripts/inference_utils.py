@@ -43,11 +43,10 @@ def merge_frame_indicies(walking_frames,thr_merging,thr_save):
                 count = 0
     return results
 
-def split_video_to_walking_only(files_abs_path):
+def split_video_to_walking_only(files_abs_path, disp = 0):
     
     # Figuring out the frames where the mouse is walking 
     offset = 400
-    disp = 0
 
     batch = []
     images = []
@@ -61,12 +60,12 @@ def split_video_to_walking_only(files_abs_path):
 
     for frame_path in files_abs_path:
 
-        if 1:
+        try:
             # Read each image and averaging over all channels 
             image_data = plt.imread(frame_path)
             image_data = np.int32(np.mean(image_data,axis = -1 ))
             batch.append(image_data)
-        else:
+        except:
             x = 1 
 
         print(len(batch),end='\r')
@@ -124,11 +123,10 @@ def split_video_to_walking_only(files_abs_path):
     print("Ratio of walking frames over not walking " + str(len(final_walking_frames)/len(files_abs_path)))
     return final_walking_frames
 
-def paw_detection_video(files_abs_path):
+def paw_detection_video(files_abs_path, disp):
     # Performing inference and plotting it on top each frame 
     count = 0 
     dict_paws = {}
-    disp = 0
 
     for f in files_abs_path:
         image_name = f.split('/')[-1]
@@ -262,12 +260,12 @@ def step_analytics_video(dict_paws, wn = 200):
     figure, ax = plt.subplots(2,2,figsize=(20,10))
     paw_names = ['front right', 'front left', 'back left','back right']
     indexes = [(0,0),(0,1),(1,0),(1,1)]
-    print(' Average change in axis over a ' + str(wn) + ' frame window with 50% overlap')
+    print(' Average change in axis over a ' + str(wn) + ' frames with 50% overlap')
     for paw_name,index in zip(paw_names,indexes):
         x = dict_paws[paw_name][0]
-        x = x[x != 0]
+        x[x == 0] += 100#np.mean(x)
         y = dict_paws[paw_name][1]
-        y = y[y != 0]
+        y[y == 0] += 100#np.mean(y)
         b = [0, wn]
         xmu_list = []
         ymu_list = []
@@ -283,3 +281,63 @@ def step_analytics_video(dict_paws, wn = 200):
         ax[index[0]][index[1]].plot(ymu_list)
         ax[index[0]][index[1]].legend(['x','y'])
         ax[index[0]][index[1]].set_title(paw_name + " std x " +  str(round(np.std(xmu_list),2)) + " std y " + str(round(np.std(ymu_list),2)))
+
+    plt.show()
+    
+    paw_names = ['front right', 'front left', 'back left','back right']
+    indexes = [(0,0),(0,1),(1,0),(1,1)]
+    print(' Polar plots per each frame where a paw was detected')
+    figure, ax = plt.subplots(2,2,figsize=(15,15),subplot_kw={'projection': 'polar'})
+    for paw_name,index in zip(paw_names,indexes):
+        x = dict_paws[paw_name][0]
+        y = dict_paws[paw_name][1]
+        x = x[x != 0]
+        y = y[y != 0]
+
+        r_mean = np.sqrt(np.power(x,2)+np.power(y,2))
+        theta_mean = np.arctan(y/x)
+
+        ax[index[0]][index[1]].plot(theta_mean,r_mean,'x')
+        ax[index[0]][index[1]].grid(True)
+        ax[index[0]][index[1]].set_title(paw_name)
+    plt.show()
+    
+    
+    
+    
+    x = dict_paws['front right'][0]
+    y = dict_paws['front right'][1]
+    r_meanFR = np.sqrt(np.power(x,2)+np.power(y,2))
+    theta_meanFR = np.arctan(y/(x+0.000001))
+    
+    x = dict_paws['front left'][0]
+    y = dict_paws['front left'][1]
+    r_meanFL = np.sqrt(np.power(x,2)+np.power(y,2))
+    theta_meanFL = np.arctan(y/(x+0.000001))
+    
+    x = dict_paws['back right'][0]
+    y = dict_paws['back right'][1]
+    r_meanBR = np.sqrt(np.power(x,2)+np.power(y,2))
+    theta_meanBR = np.arctan(y/(x+0.000001))
+    
+    x = dict_paws['back left'][0]
+    y = dict_paws['back left'][1]
+    r_meanBL = np.sqrt(np.power(x,2)+np.power(y,2))
+    theta_meanBL = np.arctan(y/(x+0.000001))
+    
+    figure, ax = plt.subplots(1,1,figsize=(15,15))
+    ax.plot(theta_meanFR+4)
+    ax.plot(theta_meanFL+2)
+    ax.plot(theta_meanBR)
+    ax.plot(theta_meanBL-2)
+    ax.legend(['FR','FL','BR','BL'])
+    ax.set_title("Paw angles between -Pi to Pi for each frame - 0 if not detected")
+    plt.show()
+    figure, ax = plt.subplots(1,1,figsize=(15,15))
+    ax.plot(r_meanFR+600)
+    ax.plot(r_meanFL+300)
+    ax.plot(r_meanBR)
+    ax.plot(r_meanBL-300)
+    ax.legend(['FR','FL','BR','BL'])
+    ax.set_title("Radius")
+    plt.show()
