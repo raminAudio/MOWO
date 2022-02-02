@@ -26,7 +26,7 @@ Hence, I decided to fine-tuned an existing model which is where I came across YO
 
 You could find some results from running YOLO on different datasets and how fast it can detect objects (https://pjreddie.com/darknet/yolo/). There are several files and scripts that are needed to train a YOLO model, most of which you will find in the link I mentioned earlier.
 
-As a heavy Tensorflow uses, and a lazy engineer, I started to look for a repo where someone has taken the weights and re-implemented YOLO with Tensorflow which is how I came across (https://github.com/qqwweee/keras-yolo3). This repo contains most of the fine-tuning scripts as well as a sample code for running inference.
+As a Tensorflow user and a lazy engineer, I started to look for a repo where someone has implemented YOLO with Tensorflow for me. Someone has: https://github.com/qqwweee/keras-yolo3. This repo contains most of the fine-tuning scripts as well as a sample code for running inference.
 
 I grabbed and modified some of their codes to match what I have for my training dataset.
 
